@@ -1,0 +1,6 @@
+<lib-lib-root></lib-lib-root>
+<form [formGroup]="tagForm">
+    <label for="tagInput">Tag Input:</label>
+    <input title="Enter a tag" type="text" name="tagInput" formControlName="tagInput" (keyup.enter)="addTag()">
+</form>
+<lib-tag *ngFor="let tag of tags" [tag]="tag" [(tags)]="tags"></lib-tag>
