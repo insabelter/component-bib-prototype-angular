@@ -4,6 +4,7 @@ import { TagComponent } from './tag-input/tag/tag.component';
 import { TagInputComponent } from './tag-input/tag-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StylesComponent } from './styles/styles.component';
+import { CardComponent } from './card/card.component';
 
 
 
@@ -11,7 +12,8 @@ import { StylesComponent } from './styles/styles.component';
   declarations: [
     TagInputComponent,
     TagComponent,
-    StylesComponent
+    StylesComponent,
+    CardComponent
   ],
   imports: [
     CommonModule,
@@ -19,7 +21,8 @@ import { StylesComponent } from './styles/styles.component';
     ReactiveFormsModule
   ],
   exports: [
-    TagInputComponent
+    TagInputComponent,
+    CardComponent
   ]
 })
 export class ComponentsModule { }

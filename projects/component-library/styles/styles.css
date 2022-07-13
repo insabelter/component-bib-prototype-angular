@@ -3,7 +3,20 @@
  *
  * Define colors variables used in the design system
  */
- @import '@fontsource/raleway/variable.css';
+ @import '../../../node_modules/@fontsource/raleway/variable.css';
+
+ /**
+ * fonts.css
+ */
+
+ @font-face {
+	font-family: Raleway-fallback;
+	size-adjust: 104.07%; /* stylelint-disable-line property-no-unknown */
+	ascent-override: 88%;
+	descent-override: 20%;
+	line-gap-override: 5%;
+	src: local('Arial');
+}
 
 :root {
 	/*
@@ -361,15 +374,277 @@
 }
 
 /**
- * fonts.css
+ * base.css
+ *
  */
 
- @font-face {
-	 font-family: Raleway-fallback;
-	 size-adjust: 104.07%; /* stylelint-disable-line property-no-unknown */
-	 ascent-override: 88%;
-	 descent-override: 20%;
-	 line-gap-override: 5%;
-	 src: local('Arial');
- }
+ :where(html) {
+	/* Colors */
+	accent-color: var(--color-accent-bg);
+	background-color: var(--color-bg);
+	color: var(--color-text);
+
+	/* Text */
+	font-family: var(--font-family);
+
+	/* Additional smoothing fixes for MacOS */
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+
+	@media (prefers-reduced-motion: no-preference) {
+		scroll-behavior: smooth;
+	}
+}
+
+:where(body) {
+	/* Handle the notch on mobile devices */
+	padding: env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left);
+	font-size: var(--font-size-m);
+	line-height: var(--line-height);
+
+	/* Prevent layout shift when scrollbar is visible */
+	scrollbar-gutter: stable both-edges;
+}
+
+:where(code,
+kbd, /* Keyborad input */
+pre, /* Preformatted text */
+var) {
+	font-family: var(--font-family-monospace);
+}
+
+/*
+ * Global animations
+ */
+
+*,
+::before,
+::after {
+	/* smoothly change colors when switching between themes */
+	transition: color 0.3s ease, background-color 0.3s ease;
+
+	@media (prefers-reduced-motion: no-preference) {
+		/* Transition to box-shadows like the oultine */
+		transition: var(--transition-outline-shadow);
+	}
+}
+
+/**
+ * base/animation.css
+ *
+ */
+
+ @keyframes radio-state-change {
+	from {
+		background-size: 250% 250%;
+	}
+	to {
+		background-size: 100% 100%;
+	}
+}
+
+@keyframes check-state-change {
+	from {
+		background-position: 100% 0%;
+	}
+	to {
+		background-position: 0% 0%;
+	}
+}
+
+@keyframes slide-in-from-top {
+	from {
+		transform: translateY(-100vh);
+	}
+}
+
+@keyframes slide-out-to-top {
+	to {
+		display: none;
+		transform: translateY(-100vh);
+	}
+}
+
+/**
+ * elements/input.css
+ *
+ */
+
+/*************************************************************************************************
+ * Basic Label style
+ *************************************************************************************************/
+ :where(label) {
+	display: flex;
+	flex-direction: column;
+	margin: var(--spacing-m);
+	color: var(--color-text);
+	font-size: var(--font-size-m);
+}
+
+/*************************************************************************************************
+ * Basic Input Style
+ *************************************************************************************************/
+:where(input) {
+	padding: var(--spacing-s);
+	border: var(--border-width) solid var(--color-accent-border-secondary);
+	border-radius: var(--border-radius-xl);
+	outline: none;
+	background-color: var(--color-bg);
+	box-shadow: var(--shadow-xs);
+	color: var(--color-text-secondary);
+	font-family: inherit;
+	font-size: var(--font-size-m);
+
+	&::placeholder {
+		color: var(--color-text-tertiary);
+	}
+
+	/**
+  * States
+  */
+	&:where(:focus),
+	&:where(:focus-within) {
+		border-color: var(--color-accent-border-secondary--focus);
+		box-shadow: var(--outline), var(--shadow-xs);
+	}
+	&:not(:disabled):hover {
+		border-color: var(--color-accent-border-secondary--hover);
+	}
+	&:where(:disabled) {
+		border-color: var(--color-accent-border-secondary--disabled);
+		background-color: var(--color-accent-bg-tertiary--disabled);
+		color: var(--color-accent-text-secondary-v2--disabled);
+	}
+}
+
+/*************************************************************************************************
+ * Search Input field
+ *************************************************************************************************/
+:where(label.search) {
+	--input-icon-size: calc(var(--font-size-m) * 1.3);
+	display: grid;
+	grid-template-columns: auto;
+	grid-template-rows: auto auto;
+
+	&::before {
+		content: '';
+		display: block;
+		grid-column: 1;
+		grid-row: 2;
+		align-self: center;
+		block-size: var(--input-icon-size);
+		inline-size: var(--input-icon-size);
+		margin-inline: 1ch;
+		background-color: currentcolor;
+		/* stylelint-disable-next-line function-no-unknown */
+		mask-image: inline('@atos-parallel/icons/svg/magnifying-glass.svg');
+		mask-repeat: no-repeat no-repeat;
+		mask-position: center center;
+		mask-size: cover;
+	}
+}
+
+:where(label.search > input[type='search']) {
+	grid-column: 1;
+	grid-row: 2;
+	padding-inline-start: calc(var(--input-icon-size) + 1.5ch);
+
+	&::-webkit-search-decoration,
+	&::-webkit-search-cancel-button,
+	&::-webkit-search-results-button,
+	&::-webkit-search-results-decoration {
+		-webkit-appearance: none; /* stylelint-disable-line property-no-vendor-prefix */
+	}
+}
+
+:where(label.search > span) {
+	grid-column: 1;
+	grid-row: 1;
+}
+
+/*************************************************************************************************
+ * Checkboxes & Radio Buttons
+ *************************************************************************************************/
+
+/* TODO: Replace class on label through :has whenever browser support is available - https://caniuse.com/css-has */
+
+:where(label.checkbox, label.radio, label.checkmark, label.toggle) {
+	--element-size: 1.25rem;
+	--border-color: var(--color-accent-border-secondary);
+
+	&:where(.toggle) {
+		/* toggle specific variables */
+		--element-lane-size: 3rem;
+		--border-width: 0.125rem;
+		--border-color: transparent;
+	}
+	display: grid;
+	grid-template-columns: var(--element-lane-size, var(--element-size)) auto;
+	grid-template-rows: auto auto;
+	gap: 0 1ch;
+
+	/**
+	 * Native element
+	 */
+	& > :where(input[type='checkbox'], input[type='radio']) {
+		/* visually hide the native element */
+		position: absolute;
+		grid-column: 1;
+		grid-row: 1;
+		block-size: 1px;
+		inline-size: 1px;
+		overflow: hidden;
+		clip: rect(1px, 1px, 1px, 1px);
+		white-space: nowrap;
+	}
+
+	/**
+	 * Label
+	 */
+	& > :where(span) {
+		cursor: pointer;
+
+		&:first-of-type {
+			display: grid;
+			grid-column: 1 / span 2;
+			grid-row: 1;
+			grid-template-columns: var(--element-lane-size, var(--element-size)) auto;
+			grid-template-columns: subgrid;
+			grid-template-rows: auto;
+			align-items: center;
+			justify-content: start;
+			font-weight: var(--font-weight-medium);
+			gap: 1ch;
+		}
+		&:not(:first-of-type):last-of-type {
+			grid-column: 2;
+			grid-row: 2;
+		}
+	}
+
+	/**
+	 * The custom designed input
+	 */
+	& > :where(span:first-of-type) {
+		&::before,
+		&::after {
+			display: inline-block;
+			grid-column: 1;
+			grid-row: 1;
+			block-size: var(--element-size);
+			inline-size: var(--element-size);
+
+			/* Overwrite default outline transition to include state change */
+			@media (prefers-reduced-motion: no-preference) {
+				transition: var(--transition-outline-shadow), var(--transition-state-changed);
+			}
+		}
+		&::before {
+			content: '';
+			border: var(--border-width) solid var(--border-color);
+			background: var(--color-bg);
+			box-shadow: var(--shadow-xs);
+		}
+	}
+}
  

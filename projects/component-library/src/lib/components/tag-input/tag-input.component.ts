@@ -9,6 +9,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 export class TagInputComponent {
 
   tagForm: FormGroup;
+  @Input() placeholder!: String;
   @Input() tags!: String[];
   @Output() tagsChange = new EventEmitter<String[]>();
 

@@ -1,4 +1,4 @@
-.badge {
+:where(.badge) {
     --_badge-bg-color: var(--color-accent-bg-secondary); /* private custom property */
     --_badge-color: var(--color-accent-text); /* private custom property */
     --_badge-icon-color: var(--color-accent-text); /* private custom property */
@@ -23,12 +23,12 @@
     vertical-align: middle;
 }
 
-.badge > button {
+:where(.badge > button) {
     color: var(--_badge-color);
     background-color: transparent;
     border: transparent;
 }
 
-.badge > button:hover {
+:where(.badge > button:hover) {
     cursor: pointer;
 }

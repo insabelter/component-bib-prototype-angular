@@ -1,6 +1,7 @@
 <lib-styles></lib-styles>
 <form [formGroup]="tagForm">
-    <label for="tagInput">Tag Input:</label>
-    <input title="Enter a tag" type="text" name="tagInput" formControlName="tagInput" (keyup.enter)="addTag()">
+    <input title="{{ placeholder }}" placeholder="{{ placeholder }}" type="text" id="tag-input" name="tagInput" formControlName="tagInput" (keyup.enter)="addTag()">
 </form>
-<lib-tag *ngFor="let tag of tags" [tag]="tag" [(tags)]="tags"></lib-tag>
+<div class="tag-container">
+    <lib-tag *ngFor="let tag of tags" [tag]="tag" [(tags)]="tags" class="tag-input-tag"></lib-tag>
+</div>
