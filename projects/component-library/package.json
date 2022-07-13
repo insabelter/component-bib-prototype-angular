@@ -1,6 +1,11 @@
 {
-  "name": "component-library",
+  "name": "@insabelter/component-library",
   "version": "0.0.1",
+  "author": "Insa Belter",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/insabelter/component-bib-prototype-angular"
+  },
   "exports": {
     "./src/styles.css": {
       "style": "./src/styles.css"
@@ -8,7 +13,8 @@
   },
   "peerDependencies": {
     "@angular/common": "^14.0.0",
-    "@angular/core": "^14.0.0"
+    "@angular/core": "^14.0.0",
+    "@fontsource/raleway": "^4.5.9"
   },
   "dependencies": {
     "tslib": "^2.3.0"

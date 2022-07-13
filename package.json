@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build --project=component-library",
+    "build": "ng build --project=component-library && npm run publish",
     "pack_lib": "cd dist/component-library && npm pack --pack-destination=\"../../../library-build\"",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "publish": "cd dist/component-library && npm publish --access public"
   },
   "private": true,
   "dependencies": {
