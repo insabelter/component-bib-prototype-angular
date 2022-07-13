@@ -1,12 +1,12 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
-  selector: 'lib-lib-root',
-  templateUrl: './lib-root.component.html',
-  styleUrls: ['./lib-root.component.css'],
+  selector: 'lib-styles',
+  templateUrl: './styles.component.html',
+  styleUrls: ['../../../../styles/styles.css'],
   encapsulation: ViewEncapsulation.None
 })
-export class LibRootComponent implements OnInit {
+export class StylesComponent implements OnInit {
 
   constructor() { }
 
