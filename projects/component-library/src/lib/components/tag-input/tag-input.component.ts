@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'lib-tag-input',
   templateUrl: './tag-input.component.html',
-  styleUrls: ['./tag-input.component.css']
+  styleUrls: ['./tag-input.component.css'],
+  encapsulation: ViewEncapsulation.ShadowDom
 })
 export class TagInputComponent {
 
