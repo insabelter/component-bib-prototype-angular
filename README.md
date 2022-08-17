@@ -1,27 +1,34 @@
-# ComponentBibPrototypeAngular
+# Prototype of an Angular component library
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.5.
+This project is part of my bachelor thesis with the topic of defining the best suited web technology for implementing a company intern component library as part of a design system. In order to do so, three component library prototypes are implemented along with test websites to use the implemented components. 
 
-## Development server
+Here is an overview of the software parts of this bachelor thesis:
+![Prototypes_English](https://user-images.githubusercontent.com/54104208/185070168-6168f409-8279-4287-a2ad-0d13eb6c5dc5.png)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+This project represents the **Angular component library prototype**.
 
-## Code scaffolding
+The links to all the parts of the bachelor thesis are listed below.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Serve test website
+
+This project includes a test webseite to test the components of the library locally.
+Run `npm start` to start a dev server which serves this website locally, then navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Run `npm run build` to build the component library. The build artifacts will be stored in the `dist/component-library` directory. 
 
-## Running unit tests
+## Import with npm
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+The directory `dist/component-library` is also the root of the npm package which is built from this project in order to publish the component library to another appilcation. The package is public and can be imported by running `npm install @insabelter/component-library-angular`
 
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Links to other repositories
+### Prototypes:
+- *Angular: https://github.com/insabelter/component-bib-prototype-angular*
+- Stencil: https://github.com/insabelter/component-bib-prototype-stencil
+- Vue: https://github.com/insabelter/component-bib-prototype-vue
+### Test Websites:
+- Based on Angular prototype: https://github.com/insabelter/website-prototype-angular
+- Based on Stencil prototype in "Vanilla TS" (using webpack): https://github.com/insabelter/website-prototype-stencil-vanilla
+- Based on Stencil prototype in Angular: https://github.com/insabelter/website-prototype-stencil-angular
+- Based on Vue prototype: https://github.com/insabelter/website-prototype-vue
