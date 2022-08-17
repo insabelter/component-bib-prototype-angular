@@ -5,7 +5,7 @@ import { TagInputComponent } from './tag-input/tag-input.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { StylesComponent } from './styles/styles.component';
 import { CardComponent } from './card/card.component';
-
+import { TimerComponent } from './timer/timer.component';
 
 
 @NgModule({
@@ -13,7 +13,8 @@ import { CardComponent } from './card/card.component';
     TagInputComponent,
     TagComponent,
     StylesComponent,
-    CardComponent
+    CardComponent,
+    TimerComponent
   ],
   imports: [
     CommonModule,
@@ -22,7 +23,8 @@ import { CardComponent } from './card/card.component';
   ],
   exports: [
     TagInputComponent,
-    CardComponent
+    CardComponent,
+    TimerComponent
   ]
 })
 export class ComponentsModule { }

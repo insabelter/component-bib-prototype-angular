@@ -1,0 +1,5 @@
+<p>Time left:</p>
+<h2>{{ timeLeft }}</h2>
+<button (click)="resetTimer()">Restart</button>
+<button (click)="pauseTimer()" *ngIf="running && timeLeft > 0">Pause</button>
+<button (click)="startTimer()" *ngIf="!running && timeLeft > 0">Continue</button>
