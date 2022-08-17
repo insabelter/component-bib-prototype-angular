@@ -26,9 +26,9 @@ The directory `dist/component-library` is also the root of the npm package which
 ### Prototypes:
 - *Angular: https://github.com/insabelter/component-bib-prototype-angular*
 - Stencil: https://github.com/insabelter/component-bib-prototype-stencil
-- Vue: https://github.com/insabelter/component-bib-prototype-vue
+- Vue.js: https://github.com/insabelter/component-bib-prototype-vue
 ### Test Websites:
 - Based on Angular prototype: https://github.com/insabelter/website-prototype-angular
 - Based on Stencil prototype in "Vanilla TS" (using webpack): https://github.com/insabelter/website-prototype-stencil-vanilla
 - Based on Stencil prototype in Angular: https://github.com/insabelter/website-prototype-stencil-angular
-- Based on Vue prototype: https://github.com/insabelter/website-prototype-vue
+- Based on Vue.js prototype: https://github.com/insabelter/website-prototype-vue
